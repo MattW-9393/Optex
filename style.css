@@ -1,0 +1,73 @@
+:root {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: auto 20px;
+    justify-content: space-around;
+}
+
+h1, h2 {
+    margin: 50px auto;
+}
+
+#saveh2{
+    margin-bottom: 0.5rem;
+}
+
+ input {
+    width: 150px;
+}
+
+
+label{
+    float: left;
+    margin-left: 30%;
+}
+
+#exercise {
+    margin-right: 35px;
+}
+
+#sets{
+    margin-left: 5px;
+}
+
+#addButton{
+    margin-top: 25px;
+    width: 5rem;
+    padding: 0.25rem;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+#saveAs{
+    width: 10rem;
+    font-size: larger;
+    border-radius: 5px;
+}
+
+table {
+    margin: auto;
+}
+
+table, th, td {
+    border: 1px solid;
+  }
+
+  .exTitleTableTemplate{
+    width: 15rem;
+    text-align: center;
+  }
+
+  .exSetsTableTemplate, .exRepsTableTemplate  {
+    width: 5rem;
+    text-align: center;
+  }
+
+
+

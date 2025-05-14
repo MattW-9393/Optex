@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>OptEx | Workout Builder App</title>
+</head>
+<body>
+    <h1>OptEx</h1>
+    <h2>Workout || Build || Optimize</h2>
+    <nav>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Templates</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+
+    <h2>Workout Builder</h2>
+    <div id="containerOne">
+        <form action="">
+            <div class="container">
+                <label for="exercise">Add Excercise: </label>
+                <input id="exercise" type="text">
+             
+            </div>
+            <br>
+            <div>
+                <label for="reps">Add Reps: </label>
+                <input id="reps" type="number" min="1" max="20">
+           
+            </div>
+            <br>
+            <div>
+                <label for="sets">Add Sets: </label>
+                <input id="sets" type="number" min="1" max="10">
+            </div>
+            <button id="addButton" type="button" onclick="addExerciseRow()">Add</button>
+     </form>
+        <br>
+    </div>
+
+    <div class="container" id="containerTwo">
+        <h2>My Workout</h2>
+        <table id="workoutTable">
+            <tr class="tableHeadersTemplate">
+                <th>Excercise</th>
+                <th>Sets</th>
+                <th>Reps</th>
+            </tr>
+            <tr class="tableRowTemplate">
+                <td class="exTitleTableTemplate">Placeholder</td>
+                <td class="exSetsTableTemplate">00</td>
+                <td class="exRepsTableTemplate">00</td>
+                <td>
+                    <button type="button" id="rmRowBtn">X</button>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <h2 id="saveh2">Great workout?</h2>
+            <p>Store your workout as a template to reuse next time!</p>
+            <button id="saveAs" type="button">Save Workout</button>
+        </div>
+    </div>
+    <footer>
+        <p id="copyright"></p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
+
+
