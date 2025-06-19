@@ -9,17 +9,21 @@
 
  const exercises = [];
 
+ const rowIdNum = 0
+
 function addExerciseRow (){
 
-   const exInput = document.getElementById("exercise").value
-   const repsInput  = document.getElementById("reps").value
-   const setsInput = document.getElementById("sets").value
-   const rmRowBtn = document.getElementById("rmRowBtn")
+   //Add row to the table
+
+   const exInput = document.getElementById("exercise").value;
+   const repsInput  = document.getElementById("reps").value;
+   const setsInput = document.getElementById("sets").value;
+   const rmRowBtn = document.getElementById("rmRowBtn");
 
    const table = document.getElementById("workoutTable");
-   const rowIdNum = table.rows.length 
-   const newRow = table.insertRow(-1)
-   newRow.id = rowIdNum
+   const rowIdNum = table.rows.length; 
+   const newRow = table.insertRow(-1);
+   newRow.id = rowIdNum;
 
    const cell1 = newRow.insertCell(0);
    const cell2 = newRow.insertCell(1);
@@ -31,14 +35,34 @@ function addExerciseRow (){
    cell3.textContent = setsInput;
 
    // add button for row removal
-   cell4.innerHTML = rmRowBtn.innerHTML= "<button type='button' id='rmRowBtn'>X</button>"
+   cell4.innerHTML = rmRowBtn.innerHTML= "<button type='button' id='rmRowBtn'>X</button>";
+
+   // Push exercises to array for saving in memory
+   const exerciseName = exInput.value;
+   const repsVal = repsInput.value;
+   const setsVal = setsInput.value;
+
+   exercises.push([exerciseName, repsVal, setsVal]);
 
    console.log(`new row added. Row ID:${rowIdNum}`)
-
 }
 
+submitExButton.addEventListener("click", addExerciseRow);
+
 function saveAsTemplate (){
-   const savedExercises = []
+   const savedExercises = prompt("")
+   const table = document.getElementById('workoutTable')
+   tableRow = table.rows;
+
+   let templateName = prompt("What would you like to call this template?", )
+
+ 
+
+
+
+   
+
+   
    
 
 }
