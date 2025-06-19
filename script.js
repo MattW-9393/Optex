@@ -3,13 +3,13 @@
  // html variables
 
 
- const submitExButton = document.getElementById("addButton");
+const submitExButton = document.getElementById("addButton");
 
- const saveAsButton = document.getElementById("saveAsButton");
+const saveAsButton = document.getElementById("saveAsButton");
 
- const exercises = [];
+const exercises = [];
 
- const rowIdNum = 0
+const rowIdNum = 0
 
 function addExerciseRow (){
 
@@ -37,32 +37,33 @@ function addExerciseRow (){
    // add button for row removal
    cell4.innerHTML = rmRowBtn.innerHTML= "<button type='button' id='rmRowBtn'>X</button>";
 
+   // array to store all exercices
+
+
    // Push exercises to array for saving in memory
-   const exerciseName = exInput.value;
-   const repsVal = repsInput.value;
-   const setsVal = setsInput.value;
+   const exerciseName = exInput
+   const repsVal = repsInput
+   const setsVal = setsInput
 
    exercises.push([exerciseName, repsVal, setsVal]);
 
-   console.log(`new row added. Row ID:${rowIdNum}`)
+   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exercises}.`)
+   
 }
 
 submitExButton.addEventListener("click", addExerciseRow);
 
 function saveAsTemplate (){
-   const savedExercises = prompt("")
-   const table = document.getElementById('workoutTable')
-   tableRow = table.rows;
+   const templateName = document.getElementById("templateNameForm").value;
+   const table = document.getElementById('workoutTable');
+   const tableRow = table.rows;
+   const workoutExercises = [];
 
-   let templateName = prompt("What would you like to call this template?", )
-
- 
-
-
-
-   
-
-   
-   
+   exercises.forEach((exercise) => {
+   workoutExercises.push(exercise);
+   });
+   console.log(`Following exercises assigned to ${templateName}: ${workoutExercises}`);
 
 }
+
+saveAsButton.addEventListener("click", saveAsTemplate);
