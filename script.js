@@ -62,7 +62,8 @@ function saveAsTemplate (){
    exercises.forEach((exercise) => {
    workoutExercises.push(exercise);
    });
-   console.log(`Following exercises assigned to ${templateName}: ${workoutExercises}`);
+   workoutExercises.push(templateName);
+   console.log(`Following exercises have been saved as a template: ${workoutExercises}`);
 
 }
 
