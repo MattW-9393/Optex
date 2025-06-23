@@ -20,6 +20,8 @@ function addExerciseRow (){
    const setsInput = document.getElementById("sets").value;
    const rmRowBtn = document.getElementById("rmRowBtn");
 
+
+
    const table = document.getElementById("workoutTable");
    const rowIdNum = table.rows.length; 
    const newRow = table.insertRow(-1);
@@ -63,8 +65,25 @@ function saveAsTemplate (){
    workoutExercises.push(exercise);
    });
    workoutExercises.push(templateName);
-   console.log(`Following exercises have been saved as a template: ${workoutExercises}`);
-
+   alert(`Template "${templateName}" has been saved successfully!`);
+   // Reset the exercises array after saving
+   exercises.length = 0;
+   // Clear the table
+   while (table.rows.length > 1) {
+       table.deleteRow(1);
+   }
+   // Clear the template name input field
+   document.getElementById("templateNameForm").value = '';
+   // Reset the row ID number
+   rowIdNum = 0;
+   // Optionally, you can reset the input fields for exercise, reps, and sets
+   document.getElementById("exercise").value = '';
+   document.getElementById("reps").value = '';
+   document.getElementById("sets").value = '';
+   console.log(`Template "${templateName}" has been saved and the form has been reset.`);
+   const stringifiedTemplates = JSON.stringify(workoutExercises);
+   localStorage.setItem("Saved Workout", stringifiedTemplates);
 }
 
 saveAsButton.addEventListener("click", saveAsTemplate);
+
