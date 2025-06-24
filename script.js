@@ -7,9 +7,10 @@ const submitExButton = document.getElementById("addButton");
 
 const saveAsButton = document.getElementById("saveAsButton");
 
+// stores all exercises
 const exercises = [];
 
-const rowIdNum = 0
+let allEntries = JSON.parse(localStorage.getItem("Exercises")) || [];
 
 function addExerciseRow (){
 
@@ -20,7 +21,7 @@ function addExerciseRow (){
    const setsInput = document.getElementById("sets").value;
    const rmRowBtn = document.getElementById("rmRowBtn");
 
-
+   
 
    const table = document.getElementById("workoutTable");
    const rowIdNum = table.rows.length; 
@@ -39,7 +40,15 @@ function addExerciseRow (){
    // add button for row removal
    cell4.innerHTML = rmRowBtn.innerHTML= "<button type='button' id='rmRowBtn'>X</button>";
 
-   // array to store all exercices
+   // create objects for each exercise
+
+   const exerciseObj = {
+      name: exInput,
+      reps: repsInput,
+      sets: setsInput
+   }
+
+   console.log(exerciseObj);
 
 
    // Push exercises to array for saving in memory
@@ -47,9 +56,12 @@ function addExerciseRow (){
    const repsVal = repsInput
    const setsVal = setsInput
 
-   exercises.push([exerciseName, repsVal, setsVal]);
+   exercises.push(exerciseObj);
+   
+   const stringifiedExercisesArray = JSON.stringify(exercises);
+   localStorage.setItem("Exercises", stringifiedExercisesArray);
 
-   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exercises}.`)
+   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`)
    
 }
 
@@ -61,29 +73,26 @@ function saveAsTemplate (){
    const tableRow = table.rows;
    const workoutExercises = [];
 
+   workoutExercises.push(templateName);
    exercises.forEach((exercise) => {
    workoutExercises.push(exercise);
    });
-   workoutExercises.push(templateName);
-   alert(`Template "${templateName}" has been saved successfully!`);
-   // Reset the exercises array after saving
-   exercises.length = 0;
-   // Clear the table
-   while (table.rows.length > 1) {
-       table.deleteRow(1);
-   }
-   // Clear the template name input field
-   document.getElementById("templateNameForm").value = '';
-   // Reset the row ID number
-   rowIdNum = 0;
-   // Optionally, you can reset the input fields for exercise, reps, and sets
-   document.getElementById("exercise").value = '';
-   document.getElementById("reps").value = '';
-   document.getElementById("sets").value = '';
-   console.log(`Template "${templateName}" has been saved and the form has been reset.`);
-   const stringifiedTemplates = JSON.stringify(workoutExercises);
-   localStorage.setItem("Saved Workout", stringifiedTemplates);
+   console.log(`Following exercises have been saved as a template: ${workoutExercises}`);
+
+   const stringifiedWorkoutTemplate = JSON.stringify(workoutExercises)
+
+   localStorage.setItem(templateName, stringifiedWorkoutTemplate);
+
+
+    for (let i = tableRow.length - 1; i >= 0; i--) {
+        const row = tableRow[i];
+
+        // Check if the row contains any <th> (header) cells, skip it
+        if (row.querySelector('th')) continue;
+
+        table.deleteRow(i);
+    }
+
 }
 
 saveAsButton.addEventListener("click", saveAsTemplate);
-
