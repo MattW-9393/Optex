@@ -51,6 +51,10 @@ label{
     border-radius: 5px;
 }
 
+#clearCurrentWorkoutBtn {
+    margin-top: 15px;
+}
+
 table {
     margin: auto;
 }

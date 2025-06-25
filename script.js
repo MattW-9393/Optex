@@ -1,16 +1,12 @@
 // WORKOUT BUILDER APP
 
  // html variables
-
-
 const submitExButton = document.getElementById("addButton");
-
+const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn")
 const saveAsButton = document.getElementById("saveAsButton");
 
 // stores all exercises
-const exercises = [];
-
-let allEntries = JSON.parse(localStorage.getItem("Exercises")) || [];
+let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
 
 function addExerciseRow (){
 
@@ -19,9 +15,6 @@ function addExerciseRow (){
    const exInput = document.getElementById("exercise").value;
    const repsInput  = document.getElementById("reps").value;
    const setsInput = document.getElementById("sets").value;
-   const rmRowBtn = document.getElementById("rmRowBtn");
-
-   
 
    const table = document.getElementById("workoutTable");
    const rowIdNum = table.rows.length; 
@@ -36,9 +29,7 @@ function addExerciseRow (){
    cell1.textContent = exInput;
    cell2.textContent = repsInput;
    cell3.textContent = setsInput;
-
-   // add button for row removal
-   cell4.innerHTML = rmRowBtn.innerHTML= "<button type='button' id='rmRowBtn'>X</button>";
+   cell4.innerHTML = `<button>Edit</button> | <button>Delete</button>`
 
    // create objects for each exercise
 
@@ -46,7 +37,7 @@ function addExerciseRow (){
       name: exInput,
       reps: repsInput,
       sets: setsInput
-   }
+   };
 
    console.log(exerciseObj);
 
@@ -61,11 +52,62 @@ function addExerciseRow (){
    const stringifiedExercisesArray = JSON.stringify(exercises);
    localStorage.setItem("Exercises", stringifiedExercisesArray);
 
-   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`)
-   
-}
+   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`) 
+};
 
 submitExButton.addEventListener("click", addExerciseRow);
+
+function renderCurrentWorkout(arr){
+   const table = document.getElementById("workoutTable");
+   exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
+   
+   const rows = table.rows;
+
+
+	for (let i = rows.length - 1; i >= 0; i--) {
+        	const row = rows[i];
+
+        // Check if the row contains any <th> (header) cells, skip it
+        	if (row.querySelector('th')) continue;
+
+        	table.deleteRow(i);
+	};
+
+   arr.forEach(entry => {
+
+      const row = table.insertRow(-1);
+    	const cell1 = row.insertCell(0);
+    	const cell2 = row.insertCell(1);
+    	const cell3 = row.insertCell(2);
+
+      cell1.textContent = entry.name;
+      cell2.textContent = entry.reps;
+      cell3.textContent = entry.sets;
+   });
+};
+
+renderCurrentWorkout(exercises);
+
+function clearCurrentWorkout() {
+
+   const table = document.getElementById("workoutTable");
+   
+   const rows = table.rows;
+
+
+	for (let i = rows.length - 1; i >= 0; i--) {
+        	const row = rows[i];
+
+        // Check if the row contains any <th> (header) cells, skip it
+        	if (row.querySelector('th')) continue;
+
+        	table.deleteRow(i);
+	};
+
+   localStorage.removeItem("Exercises");
+}
+
+clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
 
 function saveAsTemplate (){
    const templateName = document.getElementById("templateNameForm").value;
@@ -79,7 +121,7 @@ function saveAsTemplate (){
    });
    console.log(`Following exercises have been saved as a template: ${workoutExercises}`);
 
-   const stringifiedWorkoutTemplate = JSON.stringify(workoutExercises)
+   const stringifiedWorkoutTemplate = JSON.stringify(workoutExercises);
 
    localStorage.setItem(templateName, stringifiedWorkoutTemplate);
 
@@ -92,6 +134,8 @@ function saveAsTemplate (){
 
         table.deleteRow(i);
     }
+
+    localStorage.removeItem("Exercises");
 
 }
 
