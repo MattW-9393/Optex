@@ -24,7 +24,7 @@ function addExerciseRow (){
    const cell1 = newRow.insertCell(0);
    const cell2 = newRow.insertCell(1);
    const cell3 = newRow.insertCell(2);
-   const cell4 = newRow.insertCell(3)
+   const cell4 = newRow.insertCell(3);
   
    cell1.textContent = exInput;
    cell2.textContent = repsInput;
@@ -79,10 +79,12 @@ function renderCurrentWorkout(arr){
     	const cell1 = row.insertCell(0);
     	const cell2 = row.insertCell(1);
     	const cell3 = row.insertCell(2);
+      const cell4 = row.insertCell(3);
 
       cell1.textContent = entry.name;
       cell2.textContent = entry.reps;
       cell3.textContent = entry.sets;
+      cell4.innerHTML = `<button>Edit</button> | <button>Delete</button>`
    });
 };
 
