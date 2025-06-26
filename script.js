@@ -12,12 +12,19 @@ function addExerciseRow (){
 
    //Add row to the table
 
+   
+
    const exInput = document.getElementById("exercise").value;
    const repsInput  = document.getElementById("reps").value;
    const setsInput = document.getElementById("sets").value;
 
    const table = document.getElementById("workoutTable");
    const rowIdNum = table.rows.length; 
+
+   if (exInput === "" || repsInput === "" || setsInput === "" || repsInput <= 0 || setsInput <= 0) {
+      alert("Please complete all fields and resubmit")
+   } else {
+
    const newRow = table.insertRow(-1);
    newRow.id = rowIdNum;
 
@@ -52,7 +59,7 @@ function addExerciseRow (){
    const stringifiedExercisesArray = JSON.stringify(exercises);
    localStorage.setItem("Exercises", stringifiedExercisesArray);
 
-   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`) 
+   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`) }
 };
 
 submitExButton.addEventListener("click", addExerciseRow);
