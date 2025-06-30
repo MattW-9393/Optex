@@ -2,31 +2,32 @@
 
  // html variables
 const submitExButton = document.getElementById("addButton");
-const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn")
+const deleteRowBtn = document.getElementsByClassName("deleteBtn");
+const editRowBtn = document.getElementsByClassName("editBtn");
+const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn");
 const saveAsButton = document.getElementById("saveAsButton");
 
 // stores all exercises
 let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
+let workoutExercises = JSON.parse(localStorage.getItem(""))
 
 function addExerciseRow (){
 
    //Add row to the table
-
-   
 
    const exInput = document.getElementById("exercise").value;
    const repsInput  = document.getElementById("reps").value;
    const setsInput = document.getElementById("sets").value;
 
    const table = document.getElementById("workoutTable");
-   const rowIdNum = table.rows.length; 
+   const rowId = Date.now();
 
    if (exInput === "" || repsInput === "" || setsInput === "" || repsInput <= 0 || setsInput <= 0) {
       alert("Please complete all fields and resubmit")
    } else {
 
    const newRow = table.insertRow(-1);
-   newRow.id = rowIdNum;
+   newRow.id = rowId;
 
    const cell1 = newRow.insertCell(0);
    const cell2 = newRow.insertCell(1);
@@ -59,7 +60,7 @@ function addExerciseRow (){
    const stringifiedExercisesArray = JSON.stringify(exercises);
    localStorage.setItem("Exercises", stringifiedExercisesArray);
 
-   console.log(`new row added. Row ID:${rowIdNum}. Row details: ${exerciseObj}.`) }
+   console.log(`new row added. Row ID:${rowId}. Row details: ${exerciseObj}.`) }
 };
 
 submitExButton.addEventListener("click", addExerciseRow);
@@ -91,7 +92,7 @@ function renderCurrentWorkout(arr){
       cell1.textContent = entry.name;
       cell2.textContent = entry.reps;
       cell3.textContent = entry.sets;
-      cell4.innerHTML = `<button>Edit</button> | <button>Delete</button>`
+      cell4.innerHTML = `<button id="editBtn">Edit</button> | <button class="deleteBtn">Delete</button>`
    });
 };
 
@@ -116,6 +117,15 @@ function clearCurrentWorkout() {
    localStorage.removeItem("Exercises");
 }
 
+function deleteRow (){
+   document.getElementById(rowId).remove();
+}
+
+for (i = 0; i < deleteRowBtn.length; i++){
+   deleteRowBtn[i].addEventListener("click", deleteRow);
+}
+//document.getElementsByClassName('deleteBtn').addEventListener("click", deleteRow);
+
 clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
 
 function saveAsTemplate (){
@@ -128,7 +138,7 @@ function saveAsTemplate (){
    exercises.forEach((exercise) => {
    workoutExercises.push(exercise);
    });
-   console.log(`Following exercises have been saved as a template: ${workoutExercises}`);
+   console.log(workoutExercises);
 
    const stringifiedWorkoutTemplate = JSON.stringify(workoutExercises);
 
@@ -145,6 +155,7 @@ function saveAsTemplate (){
     }
 
     localStorage.removeItem("Exercises");
+    exercises.length = 0;
 
 }
 
