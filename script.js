@@ -157,17 +157,17 @@ function saveAsTemplate (){
 
     localStorage.removeItem("Exercises");
     exercises.length = 0;
-
-   let templateCardContent = document.createElement('div');
-   templateCardContent.classList.add('templateCardContent');
-   
-   templateCardContent.innerHTML= `
-    <h5 >${templateName}</h5>
-    <p>With supporting text below as a natural lead-in to additional content.</p>
-    <Button>Open Workout</Button>
-    <Button">Close Workout</Button>
-    </div>`;
+    
+     let templateCardContent = document.createElement('div');
    templateSection.appendChild(templateCardContent);
+  
+   templateCardContent.innerHTML`
+  <div class="workoutCard">
+    <h5 class="workoutTitle">${templateName}</h5>
+    <p class="cardDescription">With supporting text below as a natural lead-in to additional content.</p>
+    <Button class="workourCardBtn">Open Workout</Button>
+    <Button class="workourCardBtn">Close Workout</Button>
+  </div>`;
 }
 
 
