@@ -158,16 +158,18 @@ function saveAsTemplate (){
     localStorage.removeItem("Exercises");
     exercises.length = 0;
 
-    templateSection.appendChild(templateCardContent);
-    let templateCardContent = document.createElement('div');
-    templateCardContent.innerHTML(`<div class="card w-50">
+   let templateCardContent = document.createElement('div');
+   templateSection.appendChild(templateCardContent);
+  
+   templateCardContent.innerHTML= `<div class="card w-50">
   <div class="card-body">
     <h5 class="card-title">${templateName}</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <Button class="btn btn-primary">Open Workout</Button>
     <Button class="btn btn-primary">Close Workout</Button>
   </div>
-</div>`)
+</div>`;
+;
 }
 
 
