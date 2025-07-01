@@ -73,5 +73,20 @@ table, th, td {
     text-align: center;
   }
 
+  #templateSection {
+    display: flex;
+  }
+
+.workoutCard {
+    text-align: center;
+    border: 1px black solid;
+    width: 100px;
+    height: 100px;
+  }
+
+  .workoutCard .workoutTitle{
+    color: blueviolet;
+  }
+  
 
 
