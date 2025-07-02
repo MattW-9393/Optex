@@ -166,10 +166,14 @@ function saveAsTemplate (){
     <p class="workoutText">With supporting text below as a natural lead-in to additional content.</p>
     <Button class="workoutBtn">Open Workout</Button>
     <Button class="workoutBtn">Close Workout</Button>
+    <Button class="workoutBtn">Edit Workout</Button>
+    <Button class="workoutBtn">Delete Workout</Button>
   </div>`;
 ;
 }
 
+function openWorkout() {
 
+}
 
 saveAsButton.addEventListener("click", saveAsTemplate);
