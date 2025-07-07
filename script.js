@@ -6,10 +6,15 @@ const deleteRowBtn = document.getElementsByClassName("deleteBtn");
 const editRowBtn = document.getElementsByClassName("editBtn");
 const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn");
 const saveAsButton = document.getElementById("saveAsButton");
+const templateSection = document.getElementById('templateSection')
 
 // stores all exercises
 let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
-let workoutExercises = JSON.parse(localStorage.getItem(""))
+let workoutExercises = JSON.parse(localStorage.getItem("")) || {
+   name: templateName,
+   savedExercises: []
+}
+
 
 function addExerciseRow() {
 
@@ -68,7 +73,8 @@ submitExButton.addEventListener("click", addExerciseRow);
 
 function renderCurrentWorkout(arr) {
    const table = document.getElementById("workoutTable");
-   exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
+   // might have to re-enable/uncomment below
+   // exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
 
    const rows = table.rows;
 
@@ -133,7 +139,6 @@ function saveAsTemplate() {
    const templateName = document.getElementById("templateNameForm").value;
    const table = document.getElementById('workoutTable');
    const tableRow = table.rows;
-   const workoutExercises = [];
    const templateSection = document.getElementById('templateSection')
 
    workoutExercises.push(templateName);
@@ -164,7 +169,7 @@ function saveAsTemplate() {
    templateCardContent.innerHTML = `
   <div class="workoutCard">
     <h5 class="workoutTitle">${templateName}</h5>
-    <p class="workoutText">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
     <Button class="workoutBtn">Open Workout</Button>
     <Button class="workoutBtn">Close Workout</Button>
     <Button class="workoutBtn">Edit Workout</Button>
@@ -173,4 +178,9 @@ function saveAsTemplate() {
    ;
 }
 
+
+
 saveAsButton.addEventListener("click", saveAsTemplate);
+
+
+
