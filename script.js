@@ -165,7 +165,7 @@ function saveAsTemplate() {
   <div class="workoutCard">
     <h5 class="workoutTitle">${templateName}</h5>
     <p class="workoutText">With supporting text below as a natural lead-in to additional content.</p>
-    <Button class="workoutBtn" data-template=${templateName}>Open Workout</Button>
+    <Button class="workoutBtn">Open Workout</Button>
     <Button class="workoutBtn">Close Workout</Button>
     <Button class="workoutBtn">Edit Workout</Button>
     <Button class="workoutBtn">Delete Workout</Button>
