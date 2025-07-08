@@ -8,6 +8,7 @@ const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn")
 const saveAsButton = document.getElementById("saveAsButton");
 const templateSection = document.getElementById('templateSection')
 
+
 // stores all exercises
 let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
 
@@ -99,14 +100,12 @@ function renderCurrentWorkout(arr) {
    });
 };
 
+
 renderCurrentWorkout(exercises);
 
 function clearCurrentWorkout() {
-
    const table = document.getElementById("workoutTable");
-
    const rows = table.rows;
-
 
    for (let i = rows.length - 1; i >= 0; i--) {
       const row = rows[i];
@@ -120,13 +119,14 @@ function clearCurrentWorkout() {
    localStorage.removeItem("Exercises");
 }
 
+
 function deleteRow() {
    document.getElementById(rowId).remove();
-}
+
 
 for (i = 0; i < deleteRowBtn.length; i++) {
    deleteRowBtn[i].addEventListener("click", deleteRow);
-}
+}}
 //document.getElementsByClassName('deleteBtn').addEventListener("click", deleteRow);
 
 clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
@@ -137,16 +137,16 @@ function saveAsTemplate() {
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
 
-   savedWorkout.push(templateName);
-   exercises.forEach((exercise) => {
-      savedWorkout.push(exercise);
-   });
+   const savedWorkout = {
+   template: templateName,
+   savedExercises: exercises
+}
    
    console.log(savedWorkout);
 
    const stringifiedWorkoutTemplate = JSON.stringify(savedWorkout);
 
-   localStorage.setItem(templateName, stringifiedWorkoutTemplate);
+   localStorage.setItem(`template: ${templateName}`, stringifiedWorkoutTemplate);
 
 
    for (let i = tableRow.length - 1; i >= 0; i--) {
@@ -173,6 +173,9 @@ function saveAsTemplate() {
     <Button class="workoutBtn">Delete Workout</Button>
   </div>`
 }
+
+
+
 
 saveAsButton.addEventListener("click", saveAsTemplate);
 
