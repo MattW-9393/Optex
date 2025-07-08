@@ -10,10 +10,6 @@ const templateSection = document.getElementById('templateSection')
 
 // stores all exercises
 let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
-let workoutExercises = JSON.parse(localStorage.getItem("")) || {
-   name: templateName,
-   savedExercises: []
-}
 
 
 function addExerciseRow() {
@@ -141,13 +137,14 @@ function saveAsTemplate() {
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
 
-   workoutExercises.push(templateName);
+   savedWorkout.push(templateName);
    exercises.forEach((exercise) => {
-      workoutExercises.push(exercise);
+      savedWorkout.push(exercise);
    });
-   console.log(workoutExercises);
+   
+   console.log(savedWorkout);
 
-   const stringifiedWorkoutTemplate = JSON.stringify(workoutExercises);
+   const stringifiedWorkoutTemplate = JSON.stringify(savedWorkout);
 
    localStorage.setItem(templateName, stringifiedWorkoutTemplate);
 
@@ -174,11 +171,8 @@ function saveAsTemplate() {
     <Button class="workoutBtn">Close Workout</Button>
     <Button class="workoutBtn">Edit Workout</Button>
     <Button class="workoutBtn">Delete Workout</Button>
-  </div>`;
-   ;
+  </div>`
 }
-
-
 
 saveAsButton.addEventListener("click", saveAsTemplate);
 
