@@ -138,9 +138,9 @@ function saveAsTemplate() {
    const templateSection = document.getElementById('templateSection')
 
    const savedWorkout = {
-   template: templateName,
-   savedExercises: exercises
-}
+      template: templateName,
+      savedExercises: exercises
+   }
    
    console.log(savedWorkout);
 
@@ -180,4 +180,5 @@ function saveAsTemplate() {
 saveAsButton.addEventListener("click", saveAsTemplate);
 
 
-
+//Render all Template Cards on screen
+//Function here

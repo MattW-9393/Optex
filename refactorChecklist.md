@@ -5,15 +5,15 @@ A structured guide to improve code clarity, maintainability, and reliability.
 ---
 
 ## 🔁 1. Normalize Your Data Structure
-- [ ] Save templates as objects `{ name: "...", exercises: [...] }`
-- [ ] Remove pushing `templateName` into the `exercises` array
+- [✅ ] Save templates as objects `{ name: "...", exercises: [...] }`
+- [ ✅] Remove pushing `templateName` into the `exercises` array
 - [ ] Ensure all saved data is consistently shaped for easier parsing and rendering
 
 ---
 
 ## 📦 2. Clean Up Variable Scope
-- [ ] Remove duplicate or shadowed variables (e.g. `workoutExercises`)
-- [ ] Use only **one** declaration of `exercises` — ideally global or managed with a shared state object
+- [✅ ] Remove duplicate or shadowed variables (e.g. `workoutExercises`)
+- [✅ ] Use only **one** declaration of `exercises` — ideally global or managed with a shared state object
 - [ ] Pass data into functions as parameters instead of re-parsing `localStorage` internally
 
 ---
@@ -26,7 +26,7 @@ A structured guide to improve code clarity, maintainability, and reliability.
 ---
 
 ## 📋 4. Improve Table Rendering Logic
-- [ ] Remove the hard-coded placeholder row from your HTML
+- [✅ ] Remove the hard-coded placeholder row from your HTML
 - [ ] Ensure `renderCurrentWorkout()` only renders valid `exercises` entries
 - [ ] Consider clearing and restoring the `exercises` array before/after rendering
 
@@ -41,7 +41,7 @@ A structured guide to improve code clarity, maintainability, and reliability.
 ## 🧼 6. Polish Naming and Style
 - [ ] Fix all typos in class names (e.g. `workourCardBtn` → `workoutCardBtn`)
 - [ ] Standardize ID and class naming (`camelCase` or `kebab-case`, not both)
-- [ ] Use consistent semicolons, indentation, and spacing
+- [ ✅] Use consistent semicolons, indentation, and spacing
 
 ---
 
