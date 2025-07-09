@@ -137,10 +137,10 @@ function saveAsTemplate() {
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
 
-   savedWorkout.push(templateName);
-   exercises.forEach((exercise) => {
-      savedWorkout.push(exercise);
-   });
+   const savedWorkout = {
+      template: templateName,
+      savedExercises: exercises
+   }
    
    console.log(savedWorkout);
 
