@@ -177,4 +177,5 @@ function saveAsTemplate() {
 saveAsButton.addEventListener("click", saveAsTemplate);
 
 
-
+//Render all Template Cards on screen
+//Function here
