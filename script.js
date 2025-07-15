@@ -124,9 +124,10 @@ function deleteRow() {
    document.getElementById(rowId).remove();
 
 
-for (i = 0; i < deleteRowBtn.length; i++) {
-   deleteRowBtn[i].addEventListener("click", deleteRow);
-}}
+   for (i = 0; i < deleteRowBtn.length; i++) {
+      deleteRowBtn[i].addEventListener("click", deleteRow);
+   }
+}
 //document.getElementsByClassName('deleteBtn').addEventListener("click", deleteRow);
 
 clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
@@ -141,7 +142,7 @@ function saveAsTemplate() {
       template: templateName,
       savedExercises: exercises
    }
-   
+
    console.log(savedWorkout);
 
    const stringifiedWorkoutTemplate = JSON.stringify(savedWorkout);
@@ -182,3 +183,31 @@ saveAsButton.addEventListener("click", saveAsTemplate);
 
 //Render all Template Cards on screen
 //Function here
+
+
+function renderAllTemplates() {
+   for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("template:")) {
+         let templateSection = document.getElementById('templateSection')
+         let templateCardContent = document.createElement('div');
+         templateSection.appendChild(templateCardContent);
+         const templateData = JSON.parse(localStorage.getItem(key));
+         const templateName = templateData.template;
+         // Create + append card with templateName
+
+         templateCardContent.innerHTML = `
+   <div class="workoutCard">
+   <h5 class="workoutTitle">${templateName}</h5>
+   <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
+   <Button class="workoutBtn">Open Workout</Button>
+   <Button class="workoutBtn">Close Workout</Button>
+   <Button class="workoutBtn">Edit Workout</Button>
+   <Button class="workoutBtn">Delete Workout</Button>
+   </div>`
+      }
+   }
+}
+
+renderAllTemplates()
+
