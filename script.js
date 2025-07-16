@@ -161,18 +161,7 @@ function saveAsTemplate() {
 
    localStorage.removeItem("Exercises");
    exercises.length = 0;
-   let templateCardContent = document.createElement('div');
-   templateSection.appendChild(templateCardContent);
-
-   templateCardContent.innerHTML = `
-  <div class="workoutCard">
-    <h5 class="workoutTitle">${templateName}</h5>
-    <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
-    <Button class="workoutBtn">Open Workout</Button>
-    <Button class="workoutBtn">Close Workout</Button>
-    <Button class="workoutBtn">Edit Workout</Button>
-    <Button class="workoutBtn">Delete Workout</Button>
-  </div>`
+   window.location.reload()
 }
 
 
@@ -181,14 +170,16 @@ function saveAsTemplate() {
 saveAsButton.addEventListener("click", saveAsTemplate);
 
 
-//Render all Template Cards on screen
-//Function here
-
-
 function renderAllTemplates() {
+   // loop through local.storage items
    for (let i = 0; i < localStorage.length; i++) {
+
+      // define key to check value of [key] in the loop
       const key = localStorage.key(i);
+
+      // if the key starts with "blah" then create the element using the values 
       if (key.startsWith("template:")) {
+
          let templateSection = document.getElementById('templateSection')
          let templateCardContent = document.createElement('div');
          templateSection.appendChild(templateCardContent);
@@ -201,8 +192,6 @@ function renderAllTemplates() {
    <h5 class="workoutTitle">${templateName}</h5>
    <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
    <Button class="workoutBtn">Open Workout</Button>
-   <Button class="workoutBtn">Close Workout</Button>
-   <Button class="workoutBtn">Edit Workout</Button>
    <Button class="workoutBtn">Delete Workout</Button>
    </div>`
       }
