@@ -122,8 +122,6 @@ function clearCurrentWorkout() {
 
 function deleteRow() {
    document.getElementById(rowId).remove();
-
-
    for (i = 0; i < deleteRowBtn.length; i++) {
       deleteRowBtn[i].addEventListener("click", deleteRow);
    }
@@ -137,6 +135,10 @@ function saveAsTemplate() {
    const table = document.getElementById('workoutTable');
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
+
+   if(templateName === ""){
+      alert("You must give this workout a name.")
+   } else {
 
    const savedWorkout = {
       template: templateName,
@@ -161,13 +163,14 @@ function saveAsTemplate() {
 
    localStorage.removeItem("Exercises");
    exercises.length = 0;
-   window.location.reload()
+   window.location.reload()}
 }
 
 
 
 
 saveAsButton.addEventListener("click", saveAsTemplate);
+
 
 
 function renderAllTemplates() {
@@ -188,15 +191,42 @@ function renderAllTemplates() {
          // Create + append card with templateName
 
          templateCardContent.innerHTML = `
-   <div class="workoutCard">
+   <div class="workoutCard" data-template="${templateName}">
    <h5 class="workoutTitle">${templateName}</h5>
    <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
-   <Button class="workoutBtn">Open Workout</Button>
-   <Button class="workoutBtn">Delete Workout</Button>
+   <Button class="openWorkoutBtn">Open Workout</Button>
+   <Button class="deleteWorkoutBtn" >Delete Workout</Button>
    </div>`
       }
    }
 }
 
 renderAllTemplates()
+
+// action on workout templates
+
+function deleteWorkout(templateName){
+const storageKey = `template:${templateName}`;
+localStorage.removeItem(storageKey);
+}
+
+document.getElementById('templateSection').addEventListener('click', function(event) {
+   // get the parent element and add an event listener - the listener is triggered on a click and it then executes a function below
+  if (event.target.classList.contains('deleteWorkoutBtn')) {
+   // add event listener to the deleteWorkoutBtn
+      const parentCard = event.target.closest(".workoutCard");
+      // create variable for the workoutCard class elements
+      const templateName = parentCard.getAttribute("data-template")
+      // get the templateName from the data template attribute
+      deleteWorkout(templateName)
+      // delete the workout that has the specified templateeName
+      parentCard.remove()
+      //remove the workoutCard from the DOM
+      console.log(`${templateName} has been removed from storage.`)
+  }
+});
+
+
+
+
 
