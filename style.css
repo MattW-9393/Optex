@@ -73,6 +73,10 @@ table, th, td {
     text-align: center;
   }
 
+  .actionsField {
+    width: 10rem;
+  }
+
   #templateSection {
     display: flex;
     flex-wrap: wrap;

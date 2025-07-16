@@ -138,6 +138,10 @@ function saveAsTemplate() {
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
 
+   if(templateName === ""){
+      alert("You must give this workout a name.")
+   } else {
+
    const savedWorkout = {
       template: templateName,
       savedExercises: exercises
@@ -161,7 +165,7 @@ function saveAsTemplate() {
 
    localStorage.removeItem("Exercises");
    exercises.length = 0;
-   window.location.reload()
+   window.location.reload()}
 }
 
 
@@ -199,4 +203,8 @@ function renderAllTemplates() {
 }
 
 renderAllTemplates()
+
+// open workout templates
+
+
 
