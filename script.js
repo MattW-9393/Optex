@@ -115,8 +115,11 @@ function clearCurrentWorkout() {
 
       table.deleteRow(i);
    };
-
+   const currentWorkoutTitle = document.getElementById('currentWorkoutTitle')
+   currentWorkoutTitle.textContent = "My Workout"
    localStorage.removeItem("Exercises");
+
+
 }
 
 
@@ -225,12 +228,12 @@ document.getElementById('templateSection').addEventListener('click', function(ev
 });
 
 function openSavedWorkout(templateName) {
-   const openWorkoutTitle = document.getElementById('openWorkoutTitle')
-   const openWorkoutHere = document.getElementById('openWorkoutHere')
-   const key = `template:${templateName}`;
+   const currentWorkoutTitle = document.getElementById('currentWorkoutTitle')
+   const key = `template: ${templateName}`;
    const workout = JSON.parse(localStorage.getItem(key));
-   openWorkoutTitle.textContent=templateName;
-   renderCurrentWorkout(workout.savedExercises);
+   retrievedExercises = workout.savedExercises;
+   currentWorkoutTitle.textContent=templateName;
+   renderCurrentWorkout(retrievedExercises);
    }
 
 document.getElementById('templateSection').addEventListener('click', function(event){
@@ -239,7 +242,8 @@ document.getElementById('templateSection').addEventListener('click', function(ev
       // create variable for the workoutCard class elements
       const templateName = parentCard.getAttribute("data-template");
       // get the templateName from the data template attribute
-
+      openSavedWorkout(templateName);
+      console.log("clicked openWorkoutBtn");
 
    }
 });
