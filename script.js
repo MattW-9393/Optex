@@ -117,6 +117,7 @@ function clearCurrentWorkout() {
    };
    const currentWorkoutTitle = document.getElementById('currentWorkoutTitle')
    currentWorkoutTitle.textContent = "My Workout"
+   clearCurrentWorkoutBtn = "Clear Workout"
    localStorage.removeItem("Exercises");
 
 
@@ -233,7 +234,9 @@ function openSavedWorkout(templateName) {
    const workout = JSON.parse(localStorage.getItem(key));
    retrievedExercises = workout.savedExercises;
    currentWorkoutTitle.textContent=templateName;
+   clearCurrentWorkoutBtn.textContent = "Close Workout"
    renderCurrentWorkout(retrievedExercises);
+
    }
 
 document.getElementById('templateSection').addEventListener('click', function(event){
