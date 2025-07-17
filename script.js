@@ -115,8 +115,12 @@ function clearCurrentWorkout() {
 
       table.deleteRow(i);
    };
-
+   const currentWorkoutTitle = document.getElementById('currentWorkoutTitle')
+   currentWorkoutTitle.textContent = "My Workout"
+   clearCurrentWorkoutBtn = "Clear Workout"
    localStorage.removeItem("Exercises");
+
+
 }
 
 
@@ -167,8 +171,6 @@ function saveAsTemplate() {
 }
 
 
-
-
 saveAsButton.addEventListener("click", saveAsTemplate);
 
 
@@ -216,16 +218,38 @@ document.getElementById('templateSection').addEventListener('click', function(ev
    // add event listener to the deleteWorkoutBtn
       const parentCard = event.target.closest(".workoutCard");
       // create variable for the workoutCard class elements
-      const templateName = parentCard.getAttribute("data-template")
+      const templateName = parentCard.getAttribute("data-template");
       // get the templateName from the data template attribute
-      deleteWorkout(templateName)
+      deleteWorkout(templateName);
       // delete the workout that has the specified templateeName
-      parentCard.remove()
+      parentCard.remove();
       //remove the workoutCard from the DOM
-      console.log(`${templateName} has been removed from storage.`)
+      console.log(`${templateName} has been removed from storage.`);
   }
 });
 
+function openSavedWorkout(templateName) {
+   const currentWorkoutTitle = document.getElementById('currentWorkoutTitle')
+   const key = `template: ${templateName}`;
+   const workout = JSON.parse(localStorage.getItem(key));
+   retrievedExercises = workout.savedExercises;
+   currentWorkoutTitle.textContent=templateName;
+   clearCurrentWorkoutBtn.textContent = "Close Workout"
+   renderCurrentWorkout(retrievedExercises);
+
+   }
+
+document.getElementById('templateSection').addEventListener('click', function(event){
+   if (event.target.classList.contains('openWorkoutBtn')){
+      const parentCard = event.target.closest(".workoutCard");
+      // create variable for the workoutCard class elements
+      const templateName = parentCard.getAttribute("data-template");
+      // get the templateName from the data template attribute
+      openSavedWorkout(templateName);
+      console.log("clicked openWorkoutBtn");
+
+   }
+});
 
 
 
