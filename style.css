@@ -3,6 +3,12 @@
     text-align: center;
 }
 
+#loginLink{
+  display: block;
+  text-align: end;
+  margin-right: 2rem;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -76,7 +82,7 @@ table, th, td {
   .actionsField {
     width: 10rem;
   }
-
+  
   #templateSection {
     display: flex;
     flex-wrap: wrap;

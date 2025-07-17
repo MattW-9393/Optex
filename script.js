@@ -7,6 +7,7 @@ const editRowBtn = document.getElementsByClassName("editBtn");
 const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn");
 const saveAsButton = document.getElementById("saveAsButton");
 const templateSection = document.getElementById('templateSection')
+const clearAllTemplatesBtn = document.getElementById('clearAllTemplates')
 
 
 // stores all exercises
@@ -119,18 +120,7 @@ function clearCurrentWorkout() {
    currentWorkoutTitle.textContent = "My Workout"
    clearCurrentWorkoutBtn = "Clear Workout"
    localStorage.removeItem("Exercises");
-
-
 }
-
-
-function deleteRow() {
-   document.getElementById(rowId).remove();
-   for (i = 0; i < deleteRowBtn.length; i++) {
-      deleteRowBtn[i].addEventListener("click", deleteRow);
-   }
-}
-//document.getElementsByClassName('deleteBtn').addEventListener("click", deleteRow);
 
 clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
 
@@ -236,7 +226,6 @@ function openSavedWorkout(templateName) {
    currentWorkoutTitle.textContent=templateName;
    clearCurrentWorkoutBtn.textContent = "Close Workout"
    renderCurrentWorkout(retrievedExercises);
-
    }
 
 document.getElementById('templateSection').addEventListener('click', function(event){
@@ -247,10 +236,32 @@ document.getElementById('templateSection').addEventListener('click', function(ev
       // get the templateName from the data template attribute
       openSavedWorkout(templateName);
       console.log("clicked openWorkoutBtn");
-
    }
 });
 
+function deleteAllTemplates () {
+   const confirmation = prompt("To delete ALL saved workouts, type 'YES' ");
+
+   if (confirmation === "YES") {
+      const keysToDelete = [];
+
+      // First, collect keys to avoid modifying localStorage during iteration
+      for (let i = 0; i < localStorage.length; i++) {
+         const key = localStorage.key(i);
+         if (key && key.startsWith("template:")) {
+            keysToDelete.push(key);
+         }
+      }
+
+      // Now delete them
+      keysToDelete.forEach(key => localStorage.removeItem(key));
+
+      alert("All saved workouts have been deleted");
+      window.location.reload();
+   } else {
+      alert("Okay, nothing has been deleted");
+   }
+}
 
 
-
+clearAllTemplatesBtn.addEventListener('click', deleteAllTemplates)
