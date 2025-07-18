@@ -91,6 +91,8 @@ function addExerciseRow() {
 
 submitExButton.addEventListener("click", addExerciseRow);
 
+
+
 function renderCurrentWorkout(arr) {
    const table = document.getElementById("workoutTable");
    // might have to re-enable/uncomment below

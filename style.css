@@ -54,6 +54,7 @@ nav {
     padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    margin-top: 2rem;
 }
 
 nav ul {
@@ -74,7 +75,7 @@ nav ul a:hover {
 }
 
 h1, h2 {
-    margin: 50px auto;
+    margin: 0px auto;
     text-align: center;
 }
 
@@ -184,6 +185,7 @@ th {
 .workoutCard {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border);
+    border-radius: var(--border-radius);
     color: var(--text-primary);
     box-shadow: var(--shadow);
     text-align: center;
@@ -269,7 +271,7 @@ th {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     max-width: 800px;
-    margin: 1rem auto;
+    margin: 3rem auto;
     text-align: center;
 }
 
@@ -407,7 +409,4 @@ input[type="text"]#templateName {
     background-color: var(--danger);
 }
 
-.workoutCard{
-  border-radius: var(--border-radius);
-}
 
