@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>OptEx | Workout Builder App</title>
 </head>
 <body>
-    
+    <button id="themeToggle" class="theme-toggle">
+    <span id="themeIcon">🌙</span>
+    <span id="themeText">Dark Mode</span>
+</button>
     <h1>OptEx</h1>
     <h2>Workout || Build || Optimize</h2>
     <nav>
         <ul>
-            <li><a href="#">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#" id="loginLink">Login</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="help.html">Help</a></li>
         </ul>
     </nav>
 
     <h2>Workout Builder</h2>
     <div id="containerOne">
+        <div>
         <form action="">
-            <div class="container">
                 <label for="exercise">Add Excercise: </label>
                 <input id="exercise" type="text">
-             
-            </div>
+        </div>     
+          
             <br>
             <div>
                 <label for="reps">Add Reps: </label>
@@ -37,6 +41,7 @@
             <div>
                 <label for="sets">Add Sets: </label>
                 <input id="sets" type="number" min="1" max="10">
+            </div>
             </div>
             <button id="addButton" type="button">Add</button>
      </form>

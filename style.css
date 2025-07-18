@@ -1,12 +1,57 @@
 :root {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
+    /* Light theme variables */
+    --bg-primary-light: #ffffff;
+    --bg-secondary-light: #f3f4f6;
+    --text-primary-light: #111827;
+    --text-secondary-light: #4b5563;
+    --border-light: #e5e7eb;
+    
+    /* Dark theme variables */
+    --bg-primary-dark: #111827;
+    --bg-secondary-dark: #1f2937;
+    --text-primary-dark: #f9fafb;
+    --text-secondary-dark: #9ca3af;
+    --border-dark: #374151;
+    
+    /* Shared variables */
+    --accent: #7c3aed;
+    --accent-hover: #6d28d9;
+    --danger: #dc2626;
+    --border-radius: 6px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    
+    /* Default to light theme */
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --border: var(--border-light);
+    
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
 }
 
-#loginLink{
-  display: block;
-  text-align: end;
-  margin-right: 2rem;
+/* Dark theme class */
+:root.dark-theme {
+    --bg-primary: var(--bg-primary-dark);
+    --bg-secondary: var(--bg-secondary-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --border: var(--border-dark);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 2rem;
+}
+
+nav {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 nav ul {
@@ -16,39 +61,63 @@ nav ul {
     justify-content: space-around;
 }
 
+nav ul a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul a:hover {
+    color: var(--accent);
+}
+
 h1, h2 {
     margin: 50px auto;
+    text-align: center;
 }
 
 #saveh2{
     margin-bottom: 0.5rem;
 }
 
- input {
+input {
     width: 150px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
 }
 
+label {
+    color: var(--text-secondary);
+}
 
-label{
-    float: left;
-    margin-left: 30%;
+button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
 }
 
 #exercise {
-    margin-right: 35px;
+    margin-right: 5px;
 }
 
 #sets{
     margin-left: 5px;
 }
 
-#addButton{
+#addButton {
     margin-top: 25px;
     width: 5rem;
-    padding: 0.25rem;
-    color: white;
-    background-color: blue;
-    border-radius: 5px;
 }
 
 #saveAs{
@@ -63,49 +132,100 @@ label{
 
 table {
     margin: auto;
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
 table, th, td {
-    border: 1px solid;
-  }
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
 
-  .exTitleTableTemplate{
+th {
+    background-color: var(--accent);
+    color: white;
+}
+
+.exTitleTableTemplate{
     width: 15rem;
     text-align: center;
-  }
+}
 
-  .exSetsTableTemplate, .exRepsTableTemplate  {
+.exSetsTableTemplate, .exRepsTableTemplate  {
     width: 5rem;
     text-align: center;
-  }
+}
 
-  .actionsField {
+.actionsField {
     width: 10rem;
-  }
+}
   
-  #templateSection {
+#templateSection {
     display: flex;
     flex-wrap: wrap;
     margin: auto 0;
-  }
+}
 
 .workoutCard {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
     text-align: center;
     border: 1px black solid;
     width: 225px;
     height: 225px;
     margin: 1rem;
-  }
+}
 
-  .workoutCard .workoutTitle{
-    color: blueviolet;
+.workoutCard .workoutTitle {
+    color: var(--accent);
     font-size: 1.25rem;
     margin: 20px;
-  }
+}
   
-  .workoutCard p{
+.workoutCard p {
+    color: var(--text-secondary);
     font-size: 0.8rem;
     margin-bottom: 20px;
-  }
+}
+
+#loginLink{
+  display: block;
+  text-align: end;
+  margin-right: 2rem;
+}
+
+.theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-toggle:hover {
+    background: var(--accent);
+    color: white;
+}
+
+#containerOne, #containerTwo {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
 
 

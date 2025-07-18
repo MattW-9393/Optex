@@ -9,6 +9,28 @@ const saveAsButton = document.getElementById("saveAsButton");
 const templateSection = document.getElementById('templateSection')
 const clearAllTemplatesBtn = document.getElementById('clearAllTemplates')
 
+/* filepath: /Users/matt.warne/Desktop/WebProjects/Optex/script.js */
+// Add this near the top of your script.js file
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const themeText = document.getElementById('themeText');
+
+// Check for saved theme preference or default to light
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.classList.toggle('dark-theme', savedTheme === 'dark');
+updateThemeUI(savedTheme === 'dark');
+
+// Theme toggle functionality
+themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeUI(isDark);
+});
+
+function updateThemeUI(isDark) {
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
+    themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+}
 
 // stores all exercises
 let exercises = JSON.parse(localStorage.getItem("Exercises")) || [];
