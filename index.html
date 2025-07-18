@@ -25,28 +25,21 @@
 
     <h2>Workout Builder</h2>
     <div id="containerOne">
-        <div>
         <form id="addExForm" action="">
-                <label for="exercise">Excercise: </label>
+            <div class="form-row">
+                <label for="exercise">Exercise:   </label>
                 <input id="exercise" type="text">
-        </div>     
-          
-            <br>
-            <div>
+            </div>     
+            <div class="form-row">
                 <label for="reps">Add Reps: </label>
                 <input id="reps" type="number" min="1" max="20">
-           
             </div>
-            <br>
-            <div>
+            <div class="form-row">
                 <label for="sets">Add Sets: </label>
                 <input id="sets" type="number" min="1" max="10">
             </div>
-           
             <button id="addButton" type="button">Add</button>
-        </div>
-     </form>
-        <br>
+        </form>
     </div>
 
     <div class="container" id="containerTwo">
@@ -65,9 +58,9 @@
         <div>
             <h2 id="saveh2">Great workout?</h2>
             <p>Store your workout as a template to reuse next time!</p>
-            <form action="">
+            <form id="saveTemplateForm" action="">
                 <label for="templateNameForm">Template Name: </label>
-                <input type="text" name="templateNameForm" id="templateNameForm">
+                <input type="text" id="templateName" placeholder="Enter template name">
                 <button id="saveAsButton" type="button" >Save Workout</button>
             </form>
         </div>
