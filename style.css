@@ -45,6 +45,8 @@ body {
     color: var(--text-primary);
     margin: 0;
     padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 nav {
@@ -131,7 +133,9 @@ button:hover {
 }
 
 table {
-    margin: auto;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
     background-color: var(--bg-secondary);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -164,7 +168,10 @@ th {
 #templateSection {
     display: flex;
     flex-wrap: wrap;
-    margin: auto 0;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
 }
 
 .workoutCard {
@@ -204,7 +211,7 @@ th {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     cursor: pointer;
-    position: fixed;
+    /*position: fixed;*/
     top: 1rem;
     right: 1rem;
     z-index: 1000;
@@ -218,14 +225,42 @@ th {
     color: white;
 }
 
+/* Update container styling */
 #containerOne, #containerTwo {
     background-color: var(--bg-secondary);
     padding: 2rem;
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
     box-shadow: var(--shadow);
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+/* Remove the left margin since we're centering everything */
+#containerOne div {
+    margin-left: 0;
+}
+
+/* Center form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Update input groups */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Center footer */
+footer {
+    text-align: center;
+    margin-top: 3rem;
 }
 
 
