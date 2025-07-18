@@ -91,7 +91,28 @@ function addExerciseRow() {
 
 submitExButton.addEventListener("click", addExerciseRow);
 
+function deleteRow(rowElement) {
+  const table = document.getElementById("workoutTable");
 
+  // Remove the row from the DOM
+  table.deleteRow(rowElement.rowIndex);
+
+  // Optionally, remove from exercises array and localStorage
+  exercises.splice(rowElement.rowIndex - 1, 1); // Subtract 1 for header row
+  localStorage.setItem("Exercises", JSON.stringify(exercises));
+}
+
+// Add event listener to the entire table
+document.getElementById("workoutTable").addEventListener("click", function (event) {
+  if (event.target.classList.contains("deleteBtn")) {
+    const row = event.target.closest("tr");
+    deleteRow(row);
+  }
+});
+
+function editRow(rowElement) {
+   // code in here
+}
 
 function renderCurrentWorkout(arr) {
    const table = document.getElementById("workoutTable");
