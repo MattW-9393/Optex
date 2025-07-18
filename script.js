@@ -91,6 +91,8 @@ function addExerciseRow() {
 
 submitExButton.addEventListener("click", addExerciseRow);
 
+
+
 function renderCurrentWorkout(arr) {
    const table = document.getElementById("workoutTable");
    // might have to re-enable/uncomment below
@@ -147,7 +149,8 @@ function clearCurrentWorkout() {
 clearCurrentWorkoutBtn.addEventListener("click", clearCurrentWorkout);
 
 function saveAsTemplate() {
-   const templateName = document.getElementById("templateNameForm").value;
+   // Change templateNameForm to templateName
+   const templateName = document.getElementById("templateName").value;
    const table = document.getElementById('workoutTable');
    const tableRow = table.rows;
    const templateSection = document.getElementById('templateSection')
@@ -206,10 +209,12 @@ function renderAllTemplates() {
 
          templateCardContent.innerHTML = `
    <div class="workoutCard" data-template="${templateName}">
-   <h5 class="workoutTitle">${templateName}</h5>
-   <p class="workoutText">Use the button's below to manage your saved ${templateName} workout!.</p>
-   <Button class="openWorkoutBtn">Open Workout</Button>
-   <Button class="deleteWorkoutBtn" >Delete Workout</Button>
+      <h3 class="workoutTitle">${templateName}</h3>
+      <p class="workoutText">Saved workout template</p>
+      <div class="workoutCardButtons">
+         <button class="openWorkoutBtn">Open</button>
+         <button class="deleteWorkoutBtn">Delete</button>
+      </div>
    </div>`
       }
    }

@@ -45,6 +45,8 @@ body {
     color: var(--text-primary);
     margin: 0;
     padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 nav {
@@ -52,6 +54,7 @@ nav {
     padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    margin-top: 2rem;
 }
 
 nav ul {
@@ -72,7 +75,7 @@ nav ul a:hover {
 }
 
 h1, h2 {
-    margin: 50px auto;
+    margin: 0px auto;
     text-align: center;
 }
 
@@ -81,16 +84,19 @@ h1, h2 {
 }
 
 input {
-    width: 150px;
+    width: 150px; /* Set fixed width for all inputs */
     background-color: var(--bg-secondary);
     border: 1px solid var(--border);
     color: var(--text-primary);
     padding: 0.5rem;
     border-radius: var(--border-radius);
+    margin: 0;
 }
 
 label {
     color: var(--text-secondary);
+    text-align: right;
+    margin: 0;
 }
 
 button {
@@ -116,8 +122,10 @@ button:hover {
 }
 
 #addButton {
-    margin-top: 25px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     width: 5rem;
+    align-self: center;
 }
 
 #saveAs{
@@ -131,7 +139,9 @@ button:hover {
 }
 
 table {
-    margin: auto;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
     background-color: var(--bg-secondary);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -159,36 +169,72 @@ th {
 
 .actionsField {
     width: 10rem;
+    text-align: center;
+    margin: 15px;
 }
   
 #templateSection {
     display: flex;
     flex-wrap: wrap;
-    margin: auto 0;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
 }
 
 .workoutCard {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border);
+    border-radius: var(--border-radius);
     color: var(--text-primary);
     box-shadow: var(--shadow);
     text-align: center;
-    border: 1px black solid;
     width: 225px;
     height: 225px;
     margin: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
 }
 
-.workoutCard .workoutTitle {
+.workoutCard:hover {
+    transform: translateY(-2px);
+}
+
+.workoutTitle {
     color: var(--accent);
     font-size: 1.25rem;
-    margin: 20px;
+    margin: 0;
+    padding: 1rem 0;
 }
-  
-.workoutCard p {
+
+.workoutText {
     color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.workoutCardButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.openWorkoutBtn, .deleteWorkoutBtn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.openWorkoutBtn {
+    background-color: var(--accent);
+}
+
+.deleteWorkoutBtn {
+    background-color: var(--danger);
 }
 
 #loginLink{
@@ -204,7 +250,7 @@ th {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     cursor: pointer;
-    position: fixed;
+    /*position: fixed;*/
     top: 1rem;
     right: 1rem;
     z-index: 1000;
@@ -218,14 +264,149 @@ th {
     color: white;
 }
 
+/* Update container styling */
 #containerOne, #containerTwo {
     background-color: var(--bg-secondary);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
     box-shadow: var(--shadow);
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+/* Remove the left margin since we're centering everything */
+#containerOne div {
+    margin-left: 0;
+}
+
+/* Center form elements */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Style form rows for vertical alignment */
+.form-row {
+    display: grid;
+    grid-template-columns: 100px 150px;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Update label styling */
+label {
+    color: var(--text-secondary);
+    text-align: right;
+    margin: 0;
+    padding-right: 0.5rem;
+}
+
+/* Update input styling */
+input {
+    width: 150px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    margin: 0;
+}
+
+/* Remove individual margins */
+#exercise, #sets {
+    margin: 0;
+}
+
+/* Center the add button */
+#addButton {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    align-self: center;
+}
+
+/* Center footer */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#clearAllTemplates {
+    display: block;
+    margin: 2rem auto;
+    background-color: var(--danger);
+    padding: 0.75rem 1.5rem;
+}
+
+#clearAllTemplates:hover {
+    background-color: #b91c1c;
+}
+
+#saveTemplateForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 800px; /* Increased from 400px to accommodate wider input */
+    margin: 1rem auto;
+}
+
+#saveTemplateForm label {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+#saveTemplateForm input {
+    width: 500px;
+    margin-bottom: 1rem;
+}
+
+/* Override the default input width */
+input[type="text"]#templateName {
+    width: 500px !important; /* Use !important to override any conflicting styles */
+}
+
+#saveAsButton {
+    width: 200px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+}
+
+/* Update the container div styling */
+#containerTwo div {
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+/* Add these styles for the table buttons */
+#editBtn, .deleteBtn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    margin: 0.25rem 0.25rem;
+}
+
+/* Update the actionsField class to accommodate smaller buttons */
+.actionsField {
+    width: 8rem;
+    text-align: center;
+}
+
+/* Optional: Add specific hover states for these buttons */
+#editBtn:hover, .deleteBtn:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Style for the delete button specifically */
+.deleteBtn {
+    background-color: var(--danger);
 }
 
 
