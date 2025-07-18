@@ -168,6 +168,8 @@ th {
 
 .actionsField {
     width: 10rem;
+    text-align: center;
+    margin: 15px;
 }
   
 #templateSection {
@@ -381,4 +383,31 @@ input[type="text"]#templateName {
     margin: 2rem auto;
 }
 
+/* Add these styles for the table buttons */
+#editBtn, .deleteBtn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    margin: 0.25rem 0.25rem;
+}
+
+/* Update the actionsField class to accommodate smaller buttons */
+.actionsField {
+    width: 8rem;
+    text-align: center;
+}
+
+/* Optional: Add specific hover states for these buttons */
+#editBtn:hover, .deleteBtn:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* Style for the delete button specifically */
+.deleteBtn {
+    background-color: var(--danger);
+}
+
+.workoutCard{
+  border-radius: var(--border-radius);
+}
 
