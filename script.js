@@ -100,6 +100,7 @@ function deleteRow(rowElement) {
   // Optionally, remove from exercises array and localStorage
   exercises.splice(rowElement.rowIndex - 1, 1); // Subtract 1 for header row
   localStorage.setItem("Exercises", JSON.stringify(exercises));
+  window.location.reload();
 }
 
 // Add event listener to the entire table
