@@ -57,6 +57,10 @@ nav {
     margin-top: 2rem;
 }
 
+#loginLink {
+    display: none; /* Hide login link by default */;
+}
+
 nav ul {
     list-style: none;
     display: flex;
