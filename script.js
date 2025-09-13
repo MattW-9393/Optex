@@ -3,7 +3,6 @@
 // html variables
 const submitExButton = document.getElementById("addButton");
 const deleteRowBtn = document.getElementsByClassName("deleteBtn");
-const editRowBtn = document.getElementsByClassName("editBtn");
 const clearCurrentWorkoutBtn = document.getElementById("clearCurrentWorkoutBtn");
 const saveAsButton = document.getElementById("saveAsButton");
 const templateSection = document.getElementById('templateSection')
@@ -62,7 +61,7 @@ function addExerciseRow() {
       cell1.textContent = exInput;
       cell2.textContent = repsInput;
       cell3.textContent = setsInput;
-      cell4.innerHTML = `<button>Edit</button> | <button>Delete</button>`
+      cell4.innerHTML = `<button>Delete</button>`
 
       // create objects for each exercise
 
@@ -111,9 +110,6 @@ document.getElementById("workoutTable").addEventListener("click", function (even
   }
 });
 
-function editRow(rowElement) {
-   // code in here
-}
 
 function renderCurrentWorkout(arr) {
    const table = document.getElementById("workoutTable");
@@ -143,7 +139,7 @@ function renderCurrentWorkout(arr) {
       cell1.textContent = entry.name;
       cell2.textContent = entry.reps;
       cell3.textContent = entry.sets;
-      cell4.innerHTML = `<button id="editBtn">Edit</button> | <button class="deleteBtn">Delete</button>`
+      cell4.innerHTML = `<button class="deleteBtn">Delete</button>`
    });
 };
 
