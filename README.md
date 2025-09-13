@@ -15,9 +15,10 @@ A simple and interactive workout builder that lets you customize exercises, sets
 - Save a workout and give it a custom name via a prompt  
 - Templates are stored for easy reuse
 
-📂 **Template Library (Coming Soon)**  
+📂 **Template Library**  
 - View all saved workouts on a dedicated Templates page  
 - Generate a workout table based on the selected template
+- Workouts saved in local-memory (DB not implemented)
 
 ---
 
@@ -40,17 +41,12 @@ A simple and interactive workout builder that lets you customize exercises, sets
 ## 💡 Dev Notes
 
 - Current storage is **in-memory** only (use `localStorage` for persistence)
-- Data structure design is ongoing (e.g., using `{ name: "Upper Body", data: [...] }`)
-- You’re encouraged to separate logic for DOM rendering vs. data handling
-
 ---
 
 ## 🚀 Future Enhancements
 
 - 🧠 Persistent storage using `localStorage` or IndexedDB  
 - 🧾 Ability to edit or delete saved templates  
-- 📱 Responsive layout for mobile devices  
-- ⏱ Timer or rest suggestions between sets
 
 ---
 
@@ -65,11 +61,5 @@ A simple and interactive workout builder that lets you customize exercises, sets
 ## 📸 Screenshots (Coming Soon)
 
 > Show off your UI here!
-
----
-
-## 🙌 Credits
-
-Built with 💪 by a dev on a journey to master JavaScript — one workout at a time!
 
 ---
